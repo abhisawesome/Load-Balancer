@@ -3,11 +3,16 @@ import LoadBalancer from './lib';
 
 dotenv.config();
 
-try {
-  const data = process.env.data ? JSON.parse(process.env.data) : [];
-  const loadBalancer = new LoadBalancer(data);
-  loadBalancer.createLoadBalancerConfig();
-} catch (error) {
-  console.log(error);
-  throw error;
-}
+const Configure = async (data:any) => {
+  try {
+    const loadBalancer = new LoadBalancer(data);
+    const config = await loadBalancer.createLoadBalancerConfig();
+    console.log(config);
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};
+
+const data = process.env.data ? JSON.parse(process.env.data) : [];
+Configure(data);

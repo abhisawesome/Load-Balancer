@@ -4,7 +4,7 @@ import { inputArgs } from '../model/constructor-model';
  * @param {Array<inputArgs>} data
  */
 
-export default (data: Array<inputArgs>, upstreamName: String = 'all') => {
+export default (data: Array<inputArgs>, upstreamName: String) => {
   let config = `upstream ${upstreamName} {`;
   data.forEach((serverElement) => {
     const { server, weight } = serverElement;

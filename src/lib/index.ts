@@ -4,15 +4,21 @@ import createConfig from './helper';
 class LoadBalancer {
   data!: Array<inputArgs>
 
-  constructor(args: Array<inputArgs>) {
+  port!: number
+
+  upstreamName!: String
+
+  constructor(args: Array<inputArgs>, port: number = 8080, upstreamName: String = 'all') {
     this.data = args;
+    this.port = port;
+    this.upstreamName = upstreamName;
   }
 
   /**
    * To create config for load balancer.
    */
   createLoadBalancerConfig() {
-    createConfig(this.data);
+    return createConfig(this.data, this.port, this.upstreamName);
   }
 }
 
