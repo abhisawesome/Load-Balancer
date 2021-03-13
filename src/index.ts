@@ -13,7 +13,7 @@ const Configure = async (data: any,
     const { port, upstreamName, nginxConfigLocation } = options;
     const loadBalancer = new LoadBalancer(data, { port, upstreamName, nginxConfigLocation });
     const config = await loadBalancer.createLoadBalancerConfig();
-    console.log(config);
+    await loadBalancer.makeConfig(config);
   } catch (error) {
     console.log(error);
     throw error;
