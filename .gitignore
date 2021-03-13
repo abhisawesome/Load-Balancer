@@ -106,3 +106,5 @@ dist
 dist/
 
 test.txt
+
+nginx.config

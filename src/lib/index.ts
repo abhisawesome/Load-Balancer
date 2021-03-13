@@ -36,7 +36,7 @@ class LoadBalancer {
    */
   async makeConfig(nginxConfig:String) {
     console.log(nginxConfig, '\n\n', this.nginxConfigLocation);
-    fs.writeFile(`${this.nginxConfigLocation}/nginx.config`, nginxConfig);
+    fs.writeFile(`./nginx.config`, nginxConfig);
   }
 }
 

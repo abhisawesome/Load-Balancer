@@ -1,10 +1,12 @@
-FROM node:latest
-WORKDIR /nginx
-RUN apt-get update && apt-get install nginx -y
-COPY ./package.json /nginx
+FROM node:latest as nodeBase
+WORKDIR /app
+# RUN apt-get update && apt-get install nginx -y
+COPY ./package.json /app
 RUN npm i
-COPY . /nginx
-RUN ls && pwd
+COPY . /app
 RUN npm run build
-RUN ls && pwd && cd dist && ls && pwd
-CMD [ "npm","run","start" ]
+CMD [ "npm","run","start"]
+
+
+
+
