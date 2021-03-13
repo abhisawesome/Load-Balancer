@@ -8,7 +8,7 @@ import createHttp from './create-http';
  * @param {Array<inputArgs>} data
  * @returns
  */
-export default (data: Array<inputArgs>, port:number, upstreamName:String) => {
+export default (data: Array<inputArgs>, port:String, upstreamName:String) => {
   try {
     const upstream = createUpstream(data, upstreamName);
     const server = createServer(port, upstreamName);

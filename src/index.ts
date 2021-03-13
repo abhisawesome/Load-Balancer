@@ -3,9 +3,15 @@ import LoadBalancer from './lib';
 
 dotenv.config();
 
-const Configure = async (data:any) => {
+const Configure = async (data: any,
+  options: {
+    port: String,
+    upstreamName: String,
+    nginxConfigLocation: String
+  }) => {
   try {
-    const loadBalancer = new LoadBalancer(data);
+    const { port, upstreamName, nginxConfigLocation } = options;
+    const loadBalancer = new LoadBalancer(data, { port, upstreamName, nginxConfigLocation });
     const config = await loadBalancer.createLoadBalancerConfig();
     console.log(config);
   } catch (error) {
@@ -15,4 +21,7 @@ const Configure = async (data:any) => {
 };
 
 const data = process.env.data ? JSON.parse(process.env.data) : [];
-Configure(data);
+const port = process.env.port || '8080';
+const upstreamName = process.env.upstreamName || 'all';
+const nginxConfigLocation = process.env.nginxConfigLocation || '/etc/nginx/nginx.conf';
+Configure(data, { port, upstreamName, nginxConfigLocation });
