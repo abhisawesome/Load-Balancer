@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
-import LoadBalancer from './lib';
+import LoadBalancer from './lib/index';
 
 dotenv.config();
 
@@ -23,5 +23,5 @@ const Configure = async (data: any,
 const data = process.env.data ? JSON.parse(process.env.data) : [];
 const port = process.env.port || '8080';
 const upstreamName = process.env.upstreamName || 'all';
-const nginxConfigLocation = process.env.nginxConfigLocation || '/etc/nginx/nginx.conf';
+const nginxConfigLocation = process.env.nginxConfigLocation || '/etc/nginx';
 Configure(data, { port, upstreamName, nginxConfigLocation });

@@ -1,6 +1,6 @@
 import fs from 'fs-extra';
 import { inputArgs } from './model/constructor-model';
-import createConfig from './helper';
+import createConfig from './helper/index';
 
 class LoadBalancer {
   data!: Array<inputArgs>
@@ -35,6 +35,7 @@ class LoadBalancer {
    * Move nginx config.
    */
   async makeConfig(nginxConfig:String) {
+    console.log(nginxConfig, '\n\n', this.nginxConfigLocation);
     fs.writeFile(`${this.nginxConfigLocation}/nginx.config`, nginxConfig);
   }
 }

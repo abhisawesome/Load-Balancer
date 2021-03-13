@@ -15,5 +15,6 @@
         "@typescript-eslint"
     ],
     "rules": {
+        "import/extensions": [".js", ".jsx", ".json", ".ts", ".tsx"]
     }
 }
