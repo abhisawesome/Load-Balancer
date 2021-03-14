@@ -9,7 +9,7 @@ export default (data: Array<inputArgs>, upstreamName: String) => {
   data.forEach((serverElement) => {
     const { server, weight } = serverElement;
     if (server) {
-      config += `server ${server} weight:${weight || 1};`;
+      config += `server ${server} weight=${weight || 1};`;
     }
   });
   config += ' }';
