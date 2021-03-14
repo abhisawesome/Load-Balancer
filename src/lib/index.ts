@@ -35,8 +35,9 @@ class LoadBalancer {
    * Move nginx config.
    */
   async makeConfig(nginxConfig:String) {
-    console.log(nginxConfig, '\n\n', this.nginxConfigLocation);
-    fs.writeFile(`${this.nginxConfigLocation}/nginx.conf`, nginxConfig);
+    const location = process.env.NODE_ENV ==='development' ? `${this.nginxConfigLocation}/nginx.conf` : '/etc/nginx/nginx.conf';
+    console.log(nginxConfig, '\n\n', location,'\n',process.env.NODE_ENV);
+    fs.writeFile(location, nginxConfig);
   }
 }
 

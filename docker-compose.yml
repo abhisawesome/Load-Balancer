@@ -1,0 +1,9 @@
+version: "3.9"
+services: 
+  node:
+    container_name: 'load-balancer'
+    build: .
+    env_file: 
+      - /Users/abhi/Desktop/nginx.config
+    ports: 
+      - 8080:8080
