@@ -5,8 +5,8 @@ COPY ./package.json /app
 RUN npm i
 COPY . /app
 RUN npm run build
-CMD [ "npm","run","start","&&","service","nginx","restart"]
-
+RUN pwd
+CMD ["npm","run","start"]
 
 
 
